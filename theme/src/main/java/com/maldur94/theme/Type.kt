@@ -1,4 +1,4 @@
-package com.maldur94.lirycsbar.ui.theme
+package com.maldur94.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.graphics.Color
@@ -8,7 +8,6 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
-import com.maldur94.lirycsbar.R
 
 private val ThunderKingdom = FontFamily(
     Font(R.font.thunder_kingdom, FontWeight.Normal)
@@ -19,7 +18,6 @@ private val BarlowCondensed = FontFamily(
     Font(R.font.thunder_kingdom, FontWeight.Normal)
 )
 
-// Set of Material typography styles to start with
 val Typography = Typography(
     h1 = TextStyle(
         fontFamily = BarlowCondensed,

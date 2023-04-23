@@ -10,8 +10,8 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.tooling.preview.Preview
-import com.maldur94.lirycsbar.ui.theme.LirycsBarTheme
 import com.maldur94.lirycsbar.util.collectLatestLifecycleFlow
+import com.maldur94.theme.LirycsBarTheme
 
 class LirycsBarActivity : ComponentActivity() {
 

@@ -52,6 +52,7 @@ android {
 
 dependencies {
     // Modules
+    implementation project(":theme")
     implementation project(":di")
 
     // Kotlin Stdlib

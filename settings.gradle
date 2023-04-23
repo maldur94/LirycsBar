@@ -17,3 +17,4 @@ dependencyResolutionManagement {
 rootProject.name = "LirycsBar"
 include ':app'
 include ':di'
+include ':theme'
