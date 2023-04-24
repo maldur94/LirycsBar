@@ -48,6 +48,12 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.6"
     }
+
+    lintOptions {
+        lintConfig rootProject.file('lint.xml')
+    }
+\
+
 }
 
 dependencies {

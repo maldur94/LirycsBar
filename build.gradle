@@ -2,6 +2,7 @@ buildscript {
     ext.kotlin_version = "1.8.20"
     ext.ktx_version = "1.10.0"
     ext.gradle_version = "7.4.2"
+    ext.detekt_version = "1.22.0"
     ext.hilt_version = "2.44"
     ext.compose_version = "1.4.2"
     ext.coroutines_version = "1.6.4"
@@ -9,6 +10,7 @@ buildscript {
     ext.gson_version = "2.9.0"
 
     repositories {
+        gradlePluginPortal()
         google()
         mavenCentral()
     }
@@ -17,5 +19,26 @@ buildscript {
         classpath "com.android.tools.build:gradle:$gradle_version"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
+        classpath "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detekt_version"
+        classpath 'com.gradleup:static-analysis-plugin:1.4'
+    }
+}
+
+plugins {
+    id "io.gitlab.arturbosch.detekt" version "$detekt_version"
+    id "com.gradleup.static-analysis" version "1.4"
+}
+
+staticAnalysis {
+    penalty {
+        maxErrors = 0
+        maxWarnings = 0
+    }
+    detekt {
+        autoCorrect = true
+        parallel = true
+        toolVersion = "1.10.0"
+        config = files("$projectDir/config/detekt/detekt-config.yml")
+        baseline = file("$projectDir/config/detekt/detekt-baseline.xml")
     }
 }
