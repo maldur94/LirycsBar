@@ -51,10 +51,12 @@ android {
 }
 
 dependencies {
+
     // Modules
-    implementation project(":theme")
     implementation project(":di")
     implementation project(":database")
+    implementation project(":network")
+    implementation project(":repository")
 
     // Kotlin Stdlib
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"

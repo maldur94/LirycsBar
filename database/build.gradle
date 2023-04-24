@@ -29,15 +29,26 @@ android {
 }
 
 dependencies {
-    implementation "androidx.core:core-ktx:$ktx_version"
-    implementation "com.google.code.gson:gson:$gson_version"
-    implementation "com.google.dagger:hilt-android:$hilt_version"
 
+    // Modules
+    implementation project(":network")
+
+    // Ktx
+    implementation "androidx.core:core-ktx:$ktx_version"
+
+    // Hilt
+    implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
     kapt "androidx.room:room-compiler:$room_version"
 
+    // Gson
+    implementation "com.google.code.gson:gson:$gson_version"
+
+    // Yoda DateTime
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
+
+    // Room
     api "androidx.room:room-common:$room_version"
     api "androidx.room:room-runtime:$room_version"
-
     annotationProcessor "androidx.room:room-compiler:$room_version"
 }

@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.maldur94.lirycsbar.R
-import com.maldur94.theme.LirycsBarTheme
+import com.maldur94.lirycsbar.theme.LirycsBarTheme
 
 @Composable
 fun LirycCard(name: String, description: String, image: Int) {

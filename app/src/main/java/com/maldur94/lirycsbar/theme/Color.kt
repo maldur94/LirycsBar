@@ -1,4 +1,4 @@
-package com.maldur94.theme
+package com.maldur94.lirycsbar.theme
 
 import androidx.compose.ui.graphics.Color
 

@@ -10,7 +10,7 @@ import com.maldur94.database.model.Lirycs
 @Dao
 interface LirycsDao {
 
-    @Query("SELECT * FROM lirycs ORDER BY login DESC")
+    @Query("SELECT * FROM lirycs ORDER BY name DESC")
     fun getAll(): List<Lirycs>
 
     @Insert(onConflict = REPLACE)
