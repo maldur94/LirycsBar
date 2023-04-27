@@ -7,11 +7,11 @@ plugins {
 
 android {
     namespace 'com.maldur94.di'
-    compileSdk 33
+    compileSdk build_config.compile_sdk
 
     defaultConfig {
-        minSdk 26
-        targetSdk 33
+        minSdk build_config.min_sdk
+        targetSdk build_config.target_sdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -34,6 +34,6 @@ dependencies {
     implementation project(":database")
 
     // Hilt
-    api "com.google.dagger:hilt-android:$hilt_version"
-    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+    implementation deps.hilt.android
+    kapt deps.hilt.compiler
 }

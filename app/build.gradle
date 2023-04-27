@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace 'com.maldur94.lirycsbar'
-    compileSdk 33
+    compileSdk build_config.compile_sdk
 
     defaultConfig {
         applicationId "com.maldur94.lirycsbar"
-        minSdk 26
-        targetSdk 33
+        minSdk build_config.min_sdk
+        targetSdk build_config.target_sdk
         versionCode 1
         versionName "1.0"
         compileSdkPreview = "UpsideDownCake"
@@ -52,8 +52,10 @@ android {
     lintOptions {
         lintConfig rootProject.file('lint.xml')
     }
-\
 
+    hilt {
+        enableAggregatingTask = true
+    }
 }
 
 dependencies {
@@ -65,46 +67,40 @@ dependencies {
     implementation project(":repository")
 
     // Kotlin Stdlib
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation deps.kotlin.stdlib
 
     // Jetpack Compose
-    implementation 'androidx.activity:activity-compose:1.8.0-alpha03'
-    implementation "androidx.compose.ui:ui:$compose_version"
-
-    // Material Design
-    implementation("androidx.compose.material:material:$compose_version")
+    implementation deps.jetpack_compose.activity
+    implementation deps.jetpack_compose.ui
+    implementation deps.jetpack_compose.material
 
     // Android Studio Preview support
-    implementation("androidx.compose.ui:ui-tooling-preview:$compose_version")
-    debugImplementation("androidx.compose.ui:ui-tooling:$compose_version")
+    implementation deps.jetpack_compose.tooling_preview
+    debugImplementation deps.jetpack_compose.ui_tooling
 
     // Jetpack
-    implementation "androidx.core:core-ktx:$ktx_version"
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'androidx.activity:activity-ktx:1.7.1'
-    implementation 'androidx.fragment:fragment-ktx:1.5.7'
+    implementation deps.android_jetpack.androidx_ktx
+    implementation deps.android_jetpack.androidx_ktx_activity
+    implementation deps.android_jetpack.androidx_ktx_fragment
+    implementation deps.android_jetpack.androidx_ktx_viewmodel
+    implementation deps.android_jetpack.androidx_swiperefresh
+    implementation deps.android_jetpack.androidx_appcompat
 
     // Material Components
-    implementation 'com.google.android.material:material:1.8.0'
-
-    // SwipeRefreshLayout
-    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
-
-    // ViewModel
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
+    implementation deps.material_component.material
 
     // Coroutines
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
+    implementation deps.coroutines.core
+    implementation deps.coroutines.android
+    implementation deps.coroutines.test
 
     // Hilt
-    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
-    implementation "com.google.dagger:hilt-android:$hilt_version"
-    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+    implementation deps.hilt.navigation_compose
+    implementation deps.hilt.android
+    kapt deps.hilt.compiler
 
     // Tests
-    testImplementation 'junit:junit:4.13.2'
-    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    testImplementation deps.tests.junit
+    testImplementation deps.tests.junit_ext
+    androidTestImplementation deps.tests.coroutines_test
 }

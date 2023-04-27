@@ -6,11 +6,11 @@ plugins {
 
 android {
     namespace 'com.maldur94.network'
-    compileSdk 33
+    compileSdk build_config.compile_sdk
 
     defaultConfig {
-        minSdk 26
-        targetSdk 33
+        minSdk build_config.min_sdk
+        targetSdk build_config.target_sdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -28,17 +28,14 @@ android {
 
 dependencies {
 
-    // Ktx
-    api 'androidx.core:core-ktx:1.10.0'
-
     // Retrofit
-    api 'com.squareup.retrofit2:retrofit:2.9.0'
-    api 'com.squareup.retrofit2:converter-gson:2.9.0'
-    api 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+    api deps.retrofit.retrofit
+    api deps.retrofit.converter_gson
+    api deps.retrofit.logging_interceptor
 
     // Timber
-    api 'com.jakewharton.timber:timber:5.0.1'
+    implementation deps.timber.timber
 
-    // Yoda DateTime
-    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
+    // Kotlinx DateTime
+    api deps.kotlinx.datetime
 }

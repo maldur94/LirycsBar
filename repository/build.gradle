@@ -1,15 +1,17 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
     namespace 'com.maldur94.repository'
-    compileSdk 33
+    compileSdk build_config.compile_sdk
 
     defaultConfig {
-        minSdk 26
-        targetSdk 33
+        minSdk build_config.min_sdk
+        targetSdk build_config.target_sdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -31,4 +33,8 @@ dependencies {
     implementation project(":di")
     implementation project(":network")
     implementation project(":database")
+
+    // Hilt
+    implementation deps.hilt.android
+    kapt deps.hilt.compiler
 }

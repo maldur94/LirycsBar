@@ -8,11 +8,11 @@ plugins {
 
 android {
     namespace 'com.maldur94.database'
-    compileSdk 33
+    compileSdk build_config.compile_sdk
 
     defaultConfig {
-        minSdk 26
-        targetSdk 33
+        minSdk build_config.min_sdk
+        targetSdk build_config.target_sdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -33,22 +33,22 @@ dependencies {
     // Modules
     implementation project(":network")
 
-    // Ktx
-    implementation "androidx.core:core-ktx:$ktx_version"
-
     // Hilt
-    implementation "com.google.dagger:hilt-android:$hilt_version"
-    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
-    kapt "androidx.room:room-compiler:$room_version"
+    implementation deps.hilt.android
+    kapt deps.hilt.compiler
 
     // Gson
-    implementation "com.google.code.gson:gson:$gson_version"
+    implementation deps.gson.code
 
-    // Yoda DateTime
-    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
+    // Timber
+    implementation deps.timber.timber
+
+    // Kotlinx DateTime
+    api deps.kotlinx.datetime
 
     // Room
-    api "androidx.room:room-common:$room_version"
-    api "androidx.room:room-runtime:$room_version"
-    annotationProcessor "androidx.room:room-compiler:$room_version"
+    api deps.room.runtime
+    api deps.room.common
+    kapt deps.room.compiler
+    annotationProcessor deps.room.compiler
 }
