@@ -73,6 +73,7 @@ dependencies {
     implementation deps.jetpack_compose.activity
     implementation deps.jetpack_compose.ui
     implementation deps.jetpack_compose.material
+    implementation deps.jetpack_compose.navigation
 
     // Android Studio Preview support
     implementation deps.jetpack_compose.tooling_preview

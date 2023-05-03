@@ -9,6 +9,7 @@ ext.build_config = build_config
 def versions = [:]
 versions.kotlin = '1.3.70'
 versions.jetpack_compose = '1.4.2'
+versions.jetpack_compose_navigation = '2.5.3'
 versions.kotlin = "1.8.20"
 versions.ktx = "1.10.0"
 versions.ktx_activity = "1.7.1"
@@ -74,6 +75,7 @@ jetpack_compose.ui = "androidx.compose.ui:ui:$versions.jetpack_compose"
 jetpack_compose.material = "androidx.compose.material:material:$versions.jetpack_compose"
 jetpack_compose.tooling_preview = "androidx.compose.ui:ui-tooling-preview:$versions.jetpack_compose"
 jetpack_compose.ui_tooling = "androidx.compose.ui:ui-tooling:$versions.jetpack_compose"
+jetpack_compose.navigation = "androidx.navigation:navigation-compose:$versions.jetpack_compose_navigation"
 deps.jetpack_compose = jetpack_compose
 
 // Material Component

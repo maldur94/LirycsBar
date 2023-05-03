@@ -5,13 +5,17 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.tooling.preview.Preview
 import com.maldur94.lirycsbar.theme.LirycsBarTheme
-import com.maldur94.lirycsbar.util.collectLatestLifecycleFlow
 
 class LirycsBarActivity : ComponentActivity() {
 
@@ -19,19 +23,26 @@ class LirycsBarActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var lirycs = listOf<String>()
-        collectLatestLifecycleFlow(viewModel.lirycs) {
-            lirycs = it
-        }
         setContent {
             LirycsBarTheme {
-                viewModel.getLirycs()
                 window.statusBarColor = MaterialTheme.colors.primaryVariant.toArgb()
+                val lirycs = viewModel.lirycs.collectAsState().value
                 Surface(color = MaterialTheme.colors.background) {
-                    LirycsList(lirycs)
+                    Scaffold(
+                        topBar = { LirycsBarAppBar { onBackPressedDispatcher.onBackPressed() } }
+                    ) {
+                        Column(Modifier.padding(it)) {
+                            LirycsList(lirycs)
+                        }
+                    }
                 }
             }
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        viewModel.getLirycs()
     }
 }
 
