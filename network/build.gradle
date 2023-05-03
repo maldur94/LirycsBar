@@ -28,14 +28,16 @@ android {
 
 dependencies {
 
+    implementation "androidx.core:core-ktx:1.10.0"
+
     // Retrofit
     api deps.retrofit.retrofit
     api deps.retrofit.converter_gson
     api deps.retrofit.logging_interceptor
 
     // Timber
-    implementation deps.timber.timber
+    api deps.timber.timber
 
     // Kotlinx DateTime
-    api deps.kotlinx.datetime
+    implementation deps.kotlinx.datetime
 }

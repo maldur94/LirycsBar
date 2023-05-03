@@ -1,12 +1,12 @@
 plugins {
     id 'com.android.library'
-    id 'kotlin-android'
+    id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
 }
 
 android {
-    namespace 'com.maldur94.di'
+    namespace 'com.maldur94.domain'
     compileSdk build_config.compile_sdk
 
     defaultConfig {
@@ -30,6 +30,7 @@ android {
 dependencies {
 
     // Modules
+    implementation project(":di")
     implementation project(":network")
     implementation project(":database")
     implementation project(":repository")

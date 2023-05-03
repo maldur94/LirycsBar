@@ -1,4 +1,4 @@
-package com.maldur94.lirycsbar.ui
+package com.maldur94.lirycsbar.component
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.*
@@ -10,17 +10,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.maldur94.database.model.Liryc
 import com.maldur94.lirycsbar.theme.LirycsBarTheme
+import kotlinx.datetime.LocalDateTime
 
 @Composable
-fun LirycCard(title: String, description: String) {
+fun LirycCard(liryc: Liryc) {
     Card(
         modifier = Modifier
             .padding(10.dp)
             .fillMaxWidth()
             .wrapContentHeight(),
         shape = MaterialTheme.shapes.medium,
-        elevation = 5.dp,
+        elevation = 6.dp,
         backgroundColor = MaterialTheme.colors.surface
     ) {
         Row(
@@ -28,7 +30,7 @@ fun LirycCard(title: String, description: String) {
         ) {
             Column(Modifier.padding(8.dp)) {
                 Text(
-                    text = title,
+                    text = liryc.title,
                     style = MaterialTheme.typography.h2,
                     modifier = Modifier
                         .padding(bottom = 8.dp)
@@ -36,7 +38,7 @@ fun LirycCard(title: String, description: String) {
                     color = MaterialTheme.colors.onSurface,
                 )
                 Text(
-                    text = description,
+                    text = liryc.description,
                     style = MaterialTheme.typography.body2,
                     modifier = Modifier.padding(bottom = 4.dp)
                 )
@@ -51,32 +53,14 @@ fun LirycCard(title: String, description: String) {
 fun PlanetCardPreview() {
     LirycsBarTheme {
         LirycCard(
-            title = "test1",
-            description = "description1"
+            Liryc(
+                0,
+                "title",
+                "test description",
+                LocalDateTime(2023, 1, 12, 0, 0),
+                iconUrl = ""
+            )
         )
     }
 }
 
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, showBackground = true, name = "Light mode")
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true, name = "Dark mode")
-@Composable
-fun PlanetCard1Preview() {
-    LirycsBarTheme {
-        LirycCard(
-            title = "test2",
-            description = "description2"
-        )
-    }
-}
-
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, showBackground = true, name = "Light mode")
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true, name = "Dark mode")
-@Composable
-fun PlanetCard2Preview() {
-    LirycsBarTheme {
-        LirycCard(
-            title = "test3",
-            description = "description3"
-        )
-    }
-}

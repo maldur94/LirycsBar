@@ -40,9 +40,6 @@ dependencies {
     // Gson
     implementation deps.gson.code
 
-    // Timber
-    implementation deps.timber.timber
-
     // Kotlinx DateTime
     api deps.kotlinx.datetime
 

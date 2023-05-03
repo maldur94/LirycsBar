@@ -7,12 +7,12 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.maldur94.database.converter.DatabaseTypeConverters
 import com.maldur94.database.dao.LirycsDao
-import com.maldur94.database.model.Lirycs
+import com.maldur94.database.model.Liryc
 
 private const val DATABASE_NAME = "LirycsBar Database"
 
 @Database(
-    entities = [Lirycs::class],
+    entities = [Liryc::class],
     version = 1,
     exportSchema = false
 )

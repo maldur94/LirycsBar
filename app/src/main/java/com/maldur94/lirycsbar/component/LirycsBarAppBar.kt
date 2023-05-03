@@ -1,4 +1,4 @@
-package com.maldur94.lirycsbar.ui
+package com.maldur94.lirycsbar.component
 
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons

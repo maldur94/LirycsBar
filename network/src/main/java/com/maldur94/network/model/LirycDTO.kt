@@ -6,9 +6,10 @@ import kotlinx.parcelize.Parcelize
 import kotlinx.parcelize.RawValue
 
 @Parcelize
-data class LirycsDTO(
+data class LirycDTO(
     val id: Int,
-    val name: String,
+    val title: String,
+    val description: String,
     val createdAt: @RawValue LocalDateTime,
     val iconUrl: String
 ) : Parcelable

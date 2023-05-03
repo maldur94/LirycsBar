@@ -65,6 +65,7 @@ dependencies {
     implementation project(":database")
     implementation project(":network")
     implementation project(":repository")
+    implementation project(":domain")
 
     // Kotlin Stdlib
     implementation deps.kotlin.stdlib

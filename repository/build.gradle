@@ -30,7 +30,6 @@ android {
 dependencies {
 
     // Modules
-    implementation project(":di")
     implementation project(":network")
     implementation project(":database")
 

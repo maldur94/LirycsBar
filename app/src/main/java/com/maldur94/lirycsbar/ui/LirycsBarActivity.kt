@@ -15,8 +15,13 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.tooling.preview.Preview
+import com.maldur94.database.model.Liryc
+import com.maldur94.lirycsbar.component.LirycsBarAppBar
 import com.maldur94.lirycsbar.theme.LirycsBarTheme
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.datetime.LocalDateTime
 
+@AndroidEntryPoint
 class LirycsBarActivity : ComponentActivity() {
 
     private val viewModel: LirycsBarViewModel by viewModels()
@@ -51,6 +56,16 @@ class LirycsBarActivity : ComponentActivity() {
 @Composable
 fun PlanetPreview() {
     LirycsBarTheme {
-        LirycsList(listOf("test1", "test2", "test3"))
+        LirycsList(
+            listOf(
+                Liryc(
+                    id = 0,
+                    title = "test",
+                    description = "description",
+                    createdAt = LocalDateTime(2023, 1, 12, 10, 0),
+                    iconUrl = ""
+                )
+            )
+        )
     }
 }

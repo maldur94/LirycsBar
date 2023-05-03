@@ -5,17 +5,17 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy.Companion.REPLACE
 import androidx.room.Query
-import com.maldur94.database.model.Lirycs
+import com.maldur94.database.model.Liryc
 
 @Dao
 interface LirycsDao {
 
-    @Query("SELECT * FROM lirycs ORDER BY name DESC")
-    fun getAll(): List<Lirycs>
+    @Query("SELECT * FROM liryc ORDER BY title DESC")
+    fun getAll(): List<Liryc>
 
     @Insert(onConflict = REPLACE)
-    fun insertAll(lirycs: List<Lirycs>)
+    fun insertAll(lirycs: List<Liryc>)
 
     @Delete
-    fun delete(liryc: Lirycs)
+    fun delete(liryc: Liryc)
 }
