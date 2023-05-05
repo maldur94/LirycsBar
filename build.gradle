@@ -26,10 +26,19 @@ staticAnalysis {
         maxWarnings = 0
     }
     detekt {
+        failFast = true
         autoCorrect = true
         parallel = true
         toolVersion = $versions.detekt_tool
-        config = files("$projectDir/config/detekt/detekt-config.yml")
-        baseline = file("$projectDir/config/detekt/detekt-baseline.xml")
+        input = files(
+                "app/src/main/java",
+                "database/src/main/java",
+                "di/src/main/java",
+                "domain/src/main/java",
+                "network/src/main/java",
+                "repository/src/main/java",
+        )
+        config = files("config/detekt/detekt-config.yml")
+        baseline = file("config/detekt/detekt-baseline.xml")
     }
 }
