@@ -13,7 +13,7 @@ class LirycsRepositoryImpl @Inject constructor(
 
     override suspend fun getLirycs(): List<Liryc> {
         val lirycsDTO = service.getLirycs().body()
-        val lirycs = (lirycsDTO?.map { it.toEntity() } ?: emptyList())
+        val lirycs = lirycsDTO?.map { it.toEntity() } ?: emptyList()
         if (lirycs.isNotEmpty()) dao.insertAll(lirycs)
         return lirycs
     }

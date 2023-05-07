@@ -4,6 +4,7 @@ import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.maldur94.database.util.toLocalDateTime
 import com.maldur94.network.model.LirycDTO
 import kotlinx.datetime.LocalDateTime
 import kotlinx.parcelize.Parcelize
@@ -24,6 +25,6 @@ fun LirycDTO.toEntity() = Liryc(
     id = id,
     title = title,
     description = description,
-    createdAt = createdAt,
+    createdAt = createdAt.toLocalDateTime(),
     iconUrl = iconUrl
 )

@@ -8,6 +8,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.maldur94.database.model.Liryc
@@ -18,7 +19,7 @@ import kotlinx.datetime.LocalDateTime
 fun LirycCard(liryc: Liryc) {
     Card(
         modifier = Modifier
-            .padding(10.dp)
+            .padding(top = 14.dp, start = 14.dp, end = 14.dp)
             .fillMaxWidth()
             .wrapContentHeight(),
         shape = MaterialTheme.shapes.medium,
@@ -28,7 +29,7 @@ fun LirycCard(liryc: Liryc) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Column(Modifier.padding(8.dp)) {
+            Column(Modifier.padding(11.dp)) {
                 Text(
                     text = liryc.title,
                     style = MaterialTheme.typography.h2,
@@ -39,8 +40,8 @@ fun LirycCard(liryc: Liryc) {
                 )
                 Text(
                     text = liryc.description,
+                    textAlign = TextAlign.Center,
                     style = MaterialTheme.typography.body2,
-                    modifier = Modifier.padding(bottom = 4.dp)
                 )
             }
         }
