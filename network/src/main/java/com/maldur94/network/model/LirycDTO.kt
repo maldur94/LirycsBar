@@ -8,6 +8,5 @@ data class LirycDTO(
     val id: Int,
     val title: String,
     val description: String,
-    val createdAt: String,
-    val iconUrl: String
+    val iconUrl: String? = null
 ) : Parcelable

@@ -5,14 +5,14 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
-import com.maldur94.lirycsbar.R
+import com.maldur94.lirycsbar.resources.Dimens
+import com.maldur94.lirycsbar.ui.lirycs.screen.LirycsBarScreen
 
 @Composable
-fun LirycsBarAppBar(navigateUp: () -> Unit) {
+fun LirycsBarAppBar(currentScreen: LirycsBarScreen, navigateUp: () -> Unit) {
     TopAppBar(
-        elevation = 10.dp,
-        title = { Text(stringResource(R.string.your_lirycs_bar)) },
+        elevation = Dimens.mediumElevation,
+        title = { Text(stringResource(currentScreen.titleId)) },
         backgroundColor = MaterialTheme.colors.primary,
         navigationIcon = {
             IconButton(onClick = { navigateUp() }) {

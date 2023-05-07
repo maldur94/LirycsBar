@@ -1,4 +1,4 @@
-package com.maldur94.lirycsbar.ui
+package com.maldur94.lirycsbar.ui.lirycs
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LirycsBarViewModel @Inject constructor(private val lirycsUseCase: LirycsUseCase) :
+class LirycsViewModel @Inject constructor(private val lirycsUseCase: LirycsUseCase) :
     ViewModel(),
     SwipeRefreshLayout.OnRefreshListener {
 

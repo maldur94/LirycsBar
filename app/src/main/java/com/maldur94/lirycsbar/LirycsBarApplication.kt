@@ -5,6 +5,8 @@ import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 import kotlin.system.exitProcess
 
+private const val EXIT_STATUS = 2
+
 @HiltAndroidApp
 class LirycsBarApplication : Application() {
 
@@ -24,7 +26,7 @@ class LirycsBarApplication : Application() {
             if (oldHandler != null) {
                 oldHandler.uncaughtException(thread, throwable)
             } else {
-                exitProcess(2)
+                exitProcess(EXIT_STATUS)
             }
         }
     }

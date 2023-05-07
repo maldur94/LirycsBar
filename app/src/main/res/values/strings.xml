@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">LirycsBar</string>
     <string name="your_lirycs_bar">Your LirycsBar</string>
+    <string name="lirycs">Lirycs</string>
+    <string name="lirycs_edit">Lirycs edit</string>
 </resources>
