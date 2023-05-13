@@ -16,20 +16,21 @@ import androidx.compose.material.icons.rounded.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import com.maldur94.database.model.Liryc
+import com.maldur94.lirycsbar.R
 import com.maldur94.lirycsbar.component.EmptyListScreen
 import com.maldur94.lirycsbar.component.LirycCard
+import com.maldur94.lirycsbar.model.LirycActions
 import com.maldur94.lirycsbar.model.LirycsBarScreen
 import com.maldur94.lirycsbar.model.TagKeys
 import com.maldur94.lirycsbar.resources.Dimens
-import com.maldur94.lirycsbar.ui.lirycs.LirycsViewModel
 
 @Composable
 fun LirycsScreen(
     navController: NavHostController,
-    viewModel: LirycsViewModel,
+    lirycActions: LirycActions,
     lirycs: List<Liryc>
 ) {
     Surface(color = MaterialTheme.colors.background) {
@@ -37,7 +38,11 @@ fun LirycsScreen(
             if (lirycs.isEmpty()) EmptyListScreen()
             LazyColumn(modifier = Modifier.fillMaxWidth()) {
                 items(lirycs) { liryc ->
-                    LirycCard(navController = navController, viewModel = viewModel, liryc = liryc)
+                    LirycCard(
+                        navController = navController,
+                        lirycActions = lirycActions,
+                        liryc = liryc
+                    )
                 }
             }
             FloatingActionButton(
@@ -48,7 +53,7 @@ fun LirycsScreen(
                 onClick = {
                     navController.currentBackStackEntry?.savedStateHandle?.set(
                         key = TagKeys.LIRYC_TAG,
-                        value = getNewLiryc(lirycs.size + 1)
+                        value = getNewEmptyLiryc(lirycs.size + 1)
                     )
                     navController.navigate(LirycsBarScreen.LirycsAdd.name)
                 },
@@ -56,12 +61,11 @@ fun LirycsScreen(
             ) {
                 Icon(
                     imageVector = Icons.Rounded.Add,
-                    contentDescription = "Add FAB",
-                    tint = Color.White,
+                    contentDescription = stringResource(R.string.add_liryc)
                 )
             }
         }
     }
 }
 
-private fun getNewLiryc(newId: Int) = Liryc(id = newId, title = "...", description = "")
+private fun getNewEmptyLiryc(newId: Int) = Liryc(id = newId, title = "", description = "")

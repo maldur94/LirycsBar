@@ -16,22 +16,22 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.maldur94.database.model.Liryc
 import com.maldur94.lirycsbar.R
+import com.maldur94.lirycsbar.model.LirycActions
 import com.maldur94.lirycsbar.model.LirycsBarScreen
 import com.maldur94.lirycsbar.model.TagKeys
 import com.maldur94.lirycsbar.resources.Dimens
-import com.maldur94.lirycsbar.ui.lirycs.LirycsViewModel
 import com.maldur94.lirycsbar.util.inQuotationMarks
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun LirycCard(navController: NavHostController, viewModel: LirycsViewModel, liryc: Liryc) {
+fun LirycCard(navController: NavHostController, lirycActions: LirycActions, liryc: Liryc) {
     var cardHeight by remember { mutableStateOf(Dimens.emptyMargin) }
     var shouldShowDialog by remember { mutableStateOf(false) }
     if (shouldShowDialog) {
         LirycsBarDialog(
             shouldShowDialog = { shouldShowDialog = it },
             confirmButtonText = stringResource(R.string.confirm),
-            confirmButtonAction = { viewModel.removeLiryc(liryc) }
+            confirmButtonAction = { lirycActions.removeLiryc(liryc) }
         )
     }
     Card(
@@ -40,7 +40,7 @@ fun LirycCard(navController: NavHostController, viewModel: LirycsViewModel, liry
                 start = Dimens.large_padding,
                 top = Dimens.large_padding,
                 end = Dimens.large_padding,
-                bottom = Dimens.tinyPadding
+                bottom = Dimens.smallPadding
             )
             .fillMaxHeight(Dimens.MAX_CARD_HEIGHT)
             .fillMaxWidth()
@@ -85,7 +85,7 @@ fun LirycCard(navController: NavHostController, viewModel: LirycsViewModel, liry
                         modifier = Modifier.fillMaxWidth(),
                         style = MaterialTheme.typography.body1,
                         textAlign = TextAlign.Center,
-                        text = "...",
+                        text = "",
                     )
                 }
             }

@@ -46,10 +46,10 @@ class LirycsBarActivity : ComponentActivity() {
                     modifier = Modifier.background(Brush.linearGradient(listOf(grey100, grey300)))
                 ) { paddingValues ->
                     LirycsBarNavHost(
-                        navController = navController,
                         paddingValues = paddingValues,
-                        lirycs = lirycs,
-                        viewModel = viewModel
+                        navController = navController,
+                        lirycActions = viewModel,
+                        lirycs = lirycs
                     )
                 }
             }

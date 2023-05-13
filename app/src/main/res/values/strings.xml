@@ -10,4 +10,6 @@
     <string name="confirm">Confirm</string>
     <string name="no_lirycs_added">No lirycs added.</string>
     <string name="please_add_new_liryc_on_button_down_below">Please add new liryc on button down below.</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
 </resources>

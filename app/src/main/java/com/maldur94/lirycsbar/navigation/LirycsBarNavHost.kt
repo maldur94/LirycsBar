@@ -8,18 +8,18 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.maldur94.database.model.Liryc
+import com.maldur94.lirycsbar.model.LirycActions
 import com.maldur94.lirycsbar.model.LirycsBarScreen
 import com.maldur94.lirycsbar.model.TagKeys.LIRYC_TAG
-import com.maldur94.lirycsbar.ui.lirycs.LirycsViewModel
 import com.maldur94.lirycsbar.ui.lirycs.screen.LirycsScreen
 import com.maldur94.lirycsbar.ui.lirycs.screen.add.LirycsAddScreen
 import com.maldur94.lirycsbar.ui.lirycs.screen.edit.LirycsEditScreen
 
 @Composable
 fun LirycsBarNavHost(
-    navController: NavHostController,
     paddingValues: PaddingValues,
-    viewModel: LirycsViewModel,
+    navController: NavHostController,
+    lirycActions: LirycActions,
     lirycs: List<Liryc>
 ) {
     NavHost(
@@ -28,14 +28,28 @@ fun LirycsBarNavHost(
         modifier = Modifier.padding(paddingValues)
     ) {
         composable(route = LirycsBarScreen.Lirycs.name) {
-            LirycsScreen(viewModel = viewModel, navController = navController, lirycs = lirycs)
+            LirycsScreen(
+                lirycActions = lirycActions,
+                navController = navController,
+                lirycs = lirycs
+            )
         }
         composable(route = LirycsBarScreen.LirycsAdd.name) {
-            LirycsAddScreen(viewModel = viewModel, navController = navController)
+            navController.previousBackStackEntry?.savedStateHandle?.get<Liryc>(LIRYC_TAG)?.run {
+                LirycsAddScreen(
+                    lirycActions = lirycActions,
+                    navController = navController,
+                    liryc = this
+                )
+            }
         }
         composable(route = LirycsBarScreen.LirycsEdit.name) {
             navController.previousBackStackEntry?.savedStateHandle?.get<Liryc>(LIRYC_TAG)?.run {
-                LirycsEditScreen(navController = navController, viewModel = viewModel, liryc = this)
+                LirycsEditScreen(
+                    navController = navController,
+                    lirycActions = lirycActions,
+                    liryc = this
+                )
             }
         }
     }
