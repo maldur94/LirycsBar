@@ -13,9 +13,9 @@ import java.io.Serializable
 @Parcelize
 @Entity(tableName = "liryc")
 data class Liryc(
-    @PrimaryKey val id: Int,
-    @ColumnInfo(name = "title") val title: String,
-    @ColumnInfo(name = "description") val description: String,
+    @PrimaryKey(autoGenerate = true) val id: Int? = null,
+    @ColumnInfo(name = "title") var title: String,
+    @ColumnInfo(name = "description") var description: String,
     @ColumnInfo(name = "iconUrl") val iconUrl: String? = null
 ) : Serializable, Parcelable {
 

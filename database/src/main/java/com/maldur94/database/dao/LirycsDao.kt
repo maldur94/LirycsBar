@@ -1,10 +1,7 @@
 package com.maldur94.database.dao
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
+import androidx.room.*
 import androidx.room.OnConflictStrategy.Companion.REPLACE
-import androidx.room.Query
 import com.maldur94.database.model.Liryc
 
 @Dao
@@ -16,6 +13,12 @@ interface LirycsDao {
     @Insert(onConflict = REPLACE)
     fun insertAll(lirycs: List<Liryc>)
 
+    @Insert
+    fun add(liryc: Liryc)
+
+    @Update
+    fun edit(liryc: Liryc)
+
     @Delete
-    fun delete(liryc: Liryc)
+    fun remove(liryc: Liryc)
 }

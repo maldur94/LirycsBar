@@ -2,7 +2,6 @@ package com.maldur94.repository
 
 import com.maldur94.database.dao.LirycsDao
 import com.maldur94.database.model.Liryc
-import com.maldur94.database.model.toEntity
 import com.maldur94.network.service.LirycsService
 import javax.inject.Inject
 
@@ -12,9 +11,21 @@ class LirycsRepositoryImpl @Inject constructor(
 ) : LirycsRepository {
 
     override suspend fun getLirycs(): List<Liryc> {
-        val lirycsDTO = service.getLirycs().body()
-        val lirycs = lirycsDTO?.map { it.toEntity() } ?: emptyList()
-        if (lirycs.isNotEmpty()) dao.insertAll(lirycs)
-        return lirycs
+        return dao.getAll()
+    }
+
+    override suspend fun addLiryc(liryc: Liryc): List<Liryc> {
+        dao.add(liryc)
+        return dao.getAll()
+    }
+
+    override suspend fun editLiryc(liryc: Liryc): List<Liryc> {
+        dao.edit(liryc)
+        return dao.getAll()
+    }
+
+    override suspend fun removeLiryc(liryc: Liryc): List<Liryc> {
+        dao.remove(liryc)
+        return dao.getAll()
     }
 }

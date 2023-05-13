@@ -17,11 +17,11 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.maldur94.lirycsbar.component.LirycsBarAppBar
+import com.maldur94.lirycsbar.model.LirycsBarScreen
 import com.maldur94.lirycsbar.navigation.LirycsBarNavHost
 import com.maldur94.lirycsbar.theme.LirycsBarTheme
 import com.maldur94.lirycsbar.theme.grey100
 import com.maldur94.lirycsbar.theme.grey300
-import com.maldur94.lirycsbar.ui.lirycs.screen.LirycsBarScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -33,9 +33,9 @@ class LirycsBarActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             LirycsBarTheme {
-                val navController = rememberNavController()
-                val lirycs = viewModel.lirycs.collectAsState().value
                 window.statusBarColor = MaterialTheme.colors.primaryVariant.toArgb()
+                val navController = rememberNavController()
+                val lirycs by viewModel.lirycs.collectAsState()
                 Scaffold(
                     topBar = {
                         LirycsBarAppBar(
@@ -47,8 +47,9 @@ class LirycsBarActivity : ComponentActivity() {
                 ) { paddingValues ->
                     LirycsBarNavHost(
                         navController = navController,
+                        paddingValues = paddingValues,
                         lirycs = lirycs,
-                        paddingValues = paddingValues
+                        viewModel = viewModel
                     )
                 }
             }

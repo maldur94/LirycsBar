@@ -1,9 +1,10 @@
-package com.maldur94.lirycsbar.ui.lirycs.screen
+package com.maldur94.lirycsbar.model
 
 import androidx.annotation.StringRes
 import com.maldur94.lirycsbar.R
 
 enum class LirycsBarScreen(@StringRes val titleId: Int) {
     Lirycs(titleId = R.string.lirycs),
-    LirycsEdit(titleId = R.string.lirycs_edit)
+    LirycsAdd(titleId = R.string.add_liryc),
+    LirycsEdit(titleId = R.string.edit_lirycs)
 }

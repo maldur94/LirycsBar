@@ -10,7 +10,7 @@ import androidx.compose.ui.text.TextStyle
 @Composable
 fun InputTextField(
     modifier: Modifier,
-    text: String,
+    text: String?,
     textStyle: TextStyle,
     onValueChange: (String) -> Unit
 ) {
@@ -22,7 +22,7 @@ fun InputTextField(
             unfocusedIndicatorColor = Color.Transparent,
             disabledIndicatorColor = Color.Transparent
         ),
-        value = text,
+        value = text ?: "",
         textStyle = textStyle,
         onValueChange = onValueChange
     )

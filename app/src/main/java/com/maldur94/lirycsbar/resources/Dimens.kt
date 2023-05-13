@@ -10,6 +10,7 @@ object Dimens {
 
     val mediumElevation = 6.dp
 
+    val tinyPadding = 4.dp
     val smallPadding = 8.dp
     val mediumPadding = 12.dp
     val large_padding = 16.dp

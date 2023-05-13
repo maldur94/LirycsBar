@@ -10,15 +10,15 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class LirycsUseCase @Inject constructor(
+class RemoveLirycUseCase @Inject constructor(
     @LirycsRepositoryInject private val repository: LirycsRepository,
     @NetworkLayerInject networkLayer: NetworkLayer
-) : NetworkLayer by networkLayer, UseCase<List<Liryc>?> {
+) : NetworkLayer by networkLayer, UseCase<Liryc, List<Liryc>?> {
 
-    override suspend fun execute(): List<Liryc>? {
+    override suspend fun execute(request: Liryc): List<Liryc>? {
         return call {
             withContext(Dispatchers.IO) {
-                repository.getLirycs()
+                repository.removeLiryc(request)
             }
         }
     }

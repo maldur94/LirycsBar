@@ -19,17 +19,25 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
 import com.maldur94.database.model.Liryc
+import com.maldur94.lirycsbar.component.EmptyListScreen
 import com.maldur94.lirycsbar.component.LirycCard
+import com.maldur94.lirycsbar.model.LirycsBarScreen
 import com.maldur94.lirycsbar.model.TagKeys
 import com.maldur94.lirycsbar.resources.Dimens
+import com.maldur94.lirycsbar.ui.lirycs.LirycsViewModel
 
 @Composable
-fun LirycsScreen(lirycs: List<Liryc>, navController: NavHostController) {
+fun LirycsScreen(
+    navController: NavHostController,
+    viewModel: LirycsViewModel,
+    lirycs: List<Liryc>
+) {
     Surface(color = MaterialTheme.colors.background) {
         Box(modifier = Modifier.fillMaxSize()) {
+            if (lirycs.isEmpty()) EmptyListScreen()
             LazyColumn(modifier = Modifier.fillMaxWidth()) {
                 items(lirycs) { liryc ->
-                    LirycCard(liryc = liryc, navController = navController)
+                    LirycCard(navController = navController, viewModel = viewModel, liryc = liryc)
                 }
             }
             FloatingActionButton(
@@ -42,7 +50,7 @@ fun LirycsScreen(lirycs: List<Liryc>, navController: NavHostController) {
                         key = TagKeys.LIRYC_TAG,
                         value = getNewLiryc(lirycs.size + 1)
                     )
-                    navController.navigate(LirycsBarScreen.LirycsEdit.name)
+                    navController.navigate(LirycsBarScreen.LirycsAdd.name)
                 },
                 shape = RoundedCornerShape(Dimens.large_padding)
             ) {

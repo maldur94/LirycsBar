@@ -4,7 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.maldur94.database.model.Liryc
-import com.maldur94.domain.lirycs.LirycsUseCase
+import com.maldur94.domain.lirycs.AddLirycUseCase
+import com.maldur94.domain.lirycs.GetLirycsUseCase
+import com.maldur94.domain.lirycs.RemoveLirycUseCase
 import com.maldur94.lirycsbar.util.ViewModel.startRefreshingAndInvokeAction
 import com.maldur94.lirycsbar.util.ViewModel.stopRefreshing
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -13,8 +15,11 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LirycsViewModel @Inject constructor(private val lirycsUseCase: LirycsUseCase) :
-    ViewModel(),
+class LirycsViewModel @Inject constructor(
+    private val getLirycsUseCase: GetLirycsUseCase,
+    private val addLirycUseCase: AddLirycUseCase,
+    private val removeLirycUseCase: RemoveLirycUseCase
+) : ViewModel(),
     SwipeRefreshLayout.OnRefreshListener {
 
     private val _lirycs = MutableStateFlow<List<Liryc>>(emptyList())
@@ -28,7 +33,28 @@ class LirycsViewModel @Inject constructor(private val lirycsUseCase: LirycsUseCa
 
     fun getLirycs() {
         viewModelScope.launch {
-            lirycsUseCase.execute()?.let { _lirycs.emit(it) }
+            getLirycsUseCase.execute()?.let { _lirycs.emit(it) }
+            stopRefreshing()
+        }
+    }
+
+    fun addLiryc(liryc: Liryc) {
+        viewModelScope.launch {
+            addLirycUseCase.execute(liryc)?.let { _lirycs.emit(it) }
+            stopRefreshing()
+        }
+    }
+
+    fun editLiryc(liryc: Liryc) {
+        viewModelScope.launch {
+            addLirycUseCase.execute(liryc)?.let { _lirycs.emit(it) }
+            stopRefreshing()
+        }
+    }
+
+    fun removeLiryc(liryc: Liryc) {
+        viewModelScope.launch {
+            removeLirycUseCase.execute(liryc)?.let { _lirycs.emit(it) }
             stopRefreshing()
         }
     }
