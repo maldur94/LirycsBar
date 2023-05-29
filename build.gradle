@@ -1,5 +1,6 @@
 apply plugin: "io.gitlab.arturbosch.detekt"
 apply plugin: "com.gradleup.static-analysis"
+apply plugin: "com.google.gms.google-services"
 
 buildscript {
     apply from: "$projectDir/libs_versions.gradle"
@@ -12,11 +13,12 @@ buildscript {
 
     dependencies {
         classpath deps.gradle
-        classpath deps.hilt.gradle_plugin
         classpath deps.kotlin.gradle_plugin
+        classpath deps.kotlin.gradle_plugin
+        classpath deps.hilt.gradle_plugin
         classpath deps.detekt_gradle_plugin
         classpath deps.static_analysis_plugin
-        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0'
+        classpath deps.google_services
     }
 }
 

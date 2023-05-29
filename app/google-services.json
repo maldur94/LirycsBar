@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "47674688345",
+    "firebase_url": "https://lirycsbarapp-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "lirycsbarapp",
+    "storage_bucket": "lirycsbarapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:47674688345:android:97585f75fe9d8a2064c248",
+        "android_client_info": {
+          "package_name": "com.maldur94.lirycsbar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "47674688345-4j71hh5vlmfc087is061p3he81085l8k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5iKijgP2HQnFemFqNqRWPdQePfU3uffA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "47674688345-4j71hh5vlmfc087is061p3he81085l8k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

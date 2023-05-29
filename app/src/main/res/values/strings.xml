@@ -10,6 +10,8 @@
     <string name="confirm">Confirm</string>
     <string name="no_lirycs_added">No lirycs added.</string>
     <string name="please_add_new_liryc_on_button_down_below">Please add new liryc on button down below.</string>
+    <string name="something_wrong">Something wrong.</string>
+    <string name="request_failed_due_to_error">Request failed due to error: %s</string>
     <string name="title">Title</string>
     <string name="description">Description</string>
     <string name="export_lirycs_into_csv_format">Export lirycs into .csv format</string>

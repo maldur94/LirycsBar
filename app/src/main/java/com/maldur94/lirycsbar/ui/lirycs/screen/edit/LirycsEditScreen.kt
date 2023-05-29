@@ -1,10 +1,19 @@
 package com.maldur94.lirycsbar.ui.lirycs.screen.edit
 
 import androidx.activity.compose.BackHandler
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -17,11 +26,11 @@ import com.maldur94.lirycsbar.resources.Dimens
 
 @Composable
 fun LirycsEditScreen(navController: NavHostController, lirycActions: LirycActions, liryc: Liryc) {
-    val lirycValue by remember { mutableStateOf(liryc) }
-    var titleValue by remember { mutableStateOf(liryc.title) }
-    var descriptionValue by remember { mutableStateOf(liryc.description) }
+    val lirycValue by remember { mutableStateOf(liryc.copy()) }
+    var titleValue by remember { mutableStateOf(liryc.copy().title) }
+    var descriptionValue by remember { mutableStateOf(liryc.copy().description) }
     BackHandler {
-        if (lirycValue != liryc) lirycActions.editLiryc(liryc)
+        if (lirycValue != liryc) lirycActions.editLiryc(oldLiryc = liryc, newLiryc = lirycValue)
         navController.navigateUp()
     }
     Card(

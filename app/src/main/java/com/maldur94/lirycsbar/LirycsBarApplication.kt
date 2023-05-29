@@ -10,7 +10,8 @@ private const val EXIT_STATUS = 2
 @HiltAndroidApp
 class LirycsBarApplication : Application() {
 
-    init {
+    override fun onCreate() {
+        super.onCreate()
         initTimber()
         setDefaultExceptionHandler()
     }

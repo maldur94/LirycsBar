@@ -14,13 +14,14 @@ import com.maldur94.lirycsbar.model.TagKeys.LIRYC_TAG
 import com.maldur94.lirycsbar.ui.lirycs.screen.LirycsScreen
 import com.maldur94.lirycsbar.ui.lirycs.screen.add.LirycsAddScreen
 import com.maldur94.lirycsbar.ui.lirycs.screen.edit.LirycsEditScreen
+import com.maldur94.repository.LirycsResponse
 
 @Composable
 fun LirycsBarNavHost(
     paddingValues: PaddingValues,
     navController: NavHostController,
     lirycActions: LirycActions,
-    lirycs: List<Liryc>
+    lirycsResponse: LirycsResponse
 ) {
     NavHost(
         navController = navController,
@@ -31,7 +32,7 @@ fun LirycsBarNavHost(
             LirycsScreen(
                 lirycActions = lirycActions,
                 navController = navController,
-                lirycs = lirycs
+                lirycsResponse = lirycsResponse
             )
         }
         composable(route = LirycsBarScreen.LirycsAdd.name) {

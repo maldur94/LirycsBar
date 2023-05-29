@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id "com.google.gms.google-services"
     id 'org.jetbrains.kotlin.android'
     id 'dagger.hilt.android.plugin'
     id 'kotlin-kapt'
@@ -15,7 +16,6 @@ android {
         targetSdk build_config.target_sdk
         versionCode 1
         versionName "1.0"
-        compileSdkPreview = "UpsideDownCake"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -33,12 +33,12 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 
     buildFeatures {
@@ -49,12 +49,12 @@ android {
         kotlinCompilerExtensionVersion = "1.4.6"
     }
 
-    lintOptions {
-        lintConfig rootProject.file('lint.xml')
-    }
-
     hilt {
         enableAggregatingTask = true
+    }
+
+    lint {
+        lintConfig file('lint.xml')
     }
 }
 
@@ -100,6 +100,13 @@ dependencies {
     implementation deps.hilt.navigation_compose
     implementation deps.hilt.android
     kapt deps.hilt.compiler
+
+    // Firebase
+    implementation platform(deps.firebase.bom)
+    implementation deps.firebase.analytics_ktx
+    implementation deps.firebase.firestore_ktx
+    implementation deps.firebase.database
+    implementation deps.firebase.auth
 
     // Tests
     testImplementation deps.tests.junit

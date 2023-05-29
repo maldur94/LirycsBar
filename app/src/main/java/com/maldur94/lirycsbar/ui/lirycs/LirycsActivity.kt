@@ -35,7 +35,7 @@ class LirycsBarActivity : ComponentActivity() {
             LirycsBarTheme {
                 window.statusBarColor = MaterialTheme.colors.primaryVariant.toArgb()
                 val navController = rememberNavController()
-                val lirycs by viewModel.lirycs.collectAsState()
+                val lirycsResponse by viewModel.lirycs.collectAsState()
                 Scaffold(
                     topBar = {
                         LirycsBarAppBar(
@@ -49,7 +49,7 @@ class LirycsBarActivity : ComponentActivity() {
                         paddingValues = paddingValues,
                         navController = navController,
                         lirycActions = viewModel,
-                        lirycs = lirycs
+                        lirycsResponse = lirycsResponse
                     )
                 }
             }

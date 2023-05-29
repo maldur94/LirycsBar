@@ -2,6 +2,7 @@ package com.maldur94.di.other
 
 import android.content.Context
 import android.content.res.Resources
+import com.google.firebase.FirebaseApp
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,6 +13,9 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object OtherModule {
+
+    @Provides
+    fun provideFirebase(@ApplicationContext context: Context) = FirebaseApp.getInstance()
 
     @Singleton
     @Provides
